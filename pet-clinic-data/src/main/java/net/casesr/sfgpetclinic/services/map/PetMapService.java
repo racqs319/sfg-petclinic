@@ -2,9 +2,11 @@ package net.casesr.sfgpetclinic.services.map;
 
 import net.casesr.sfgpetclinic.model.Pet;
 import net.casesr.sfgpetclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetMapService extends AbstractMapService<Pet, Long>
         implements PetService {
 
