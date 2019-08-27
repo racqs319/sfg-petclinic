@@ -18,7 +18,6 @@ public class OwnerMapService extends AbstractMapService<Owner, Long>
 	private final PetService petService;
 	
 	public OwnerMapService(PetTypeService petTypeService, PetService petService) {
-		super();
 		this.petTypeService = petTypeService;
 		this.petService = petService;
 	}
@@ -37,7 +36,7 @@ public class OwnerMapService extends AbstractMapService<Owner, Long>
     public Owner save(Owner owner) {
     	
     	if (owner != null) {
-    		if (owner.getPets() != null) {
+    		if (owner.getPets().size() > 0) {
     			owner.getPets().forEach(pet -> {
     				if (pet.getPetType() != null) {
     					if (pet.getPetType().getId() == null) {
