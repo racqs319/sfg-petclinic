@@ -2,13 +2,14 @@ package net.casesr.sfgpetclinic.services.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import net.casesr.sfgpetclinic.model.Visit;
-import net.casesr.sfgpetclinic.repositories.VisitRepository;
 import net.casesr.sfgpetclinic.services.VisitService;
 
 @Service
+@Profile({"default", "map"})
 public class VisitMapService extends AbstractMapService<Visit, Long> 
 		implements VisitService {
 	

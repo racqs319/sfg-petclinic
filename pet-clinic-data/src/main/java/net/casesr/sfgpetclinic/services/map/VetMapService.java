@@ -4,11 +4,14 @@ import net.casesr.sfgpetclinic.model.Specialty;
 import net.casesr.sfgpetclinic.model.Vet;
 import net.casesr.sfgpetclinic.services.SpecialtyService;
 import net.casesr.sfgpetclinic.services.VetService;
+
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long>
         implements VetService {
 	
