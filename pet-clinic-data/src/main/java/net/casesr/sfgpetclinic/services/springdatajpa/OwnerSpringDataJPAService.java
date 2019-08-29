@@ -3,12 +3,17 @@ package net.casesr.sfgpetclinic.services.springdatajpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 import net.casesr.sfgpetclinic.model.Owner;
 import net.casesr.sfgpetclinic.repositories.OwnerRepository;
 import net.casesr.sfgpetclinic.repositories.PetRepository;
 import net.casesr.sfgpetclinic.repositories.PetTypeRepository;
 import net.casesr.sfgpetclinic.services.OwnerService;
 
+@Service
+@Profile("springdatajpa")
 public class OwnerSpringDataJPAService implements OwnerService {
 	
 	private final OwnerRepository ownerRepository;
