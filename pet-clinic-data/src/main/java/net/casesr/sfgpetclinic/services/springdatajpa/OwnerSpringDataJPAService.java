@@ -1,6 +1,7 @@
 package net.casesr.sfgpetclinic.services.springdatajpa;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -61,4 +62,8 @@ public class OwnerSpringDataJPAService implements OwnerService {
 		return ownerRepository.findByLastName(lastNane);
 	}
 
+	@Override
+	public List<Owner> findAllByLastNameLike(String lastName) {
+		return ownerRepository.findAllByLastNameLike(lastName);
+	}
 }
