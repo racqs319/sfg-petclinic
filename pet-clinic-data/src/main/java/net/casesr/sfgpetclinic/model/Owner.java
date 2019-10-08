@@ -26,10 +26,12 @@ public class Owner extends Person {
 	public Owner(Long id, String firstName, String lastName, String address, String city, 
 			String telephone, Set<Pet> pets) {
 		super(id, firstName, lastName);
-		this.pets = pets;
 		this.address = address;
 		this.city = city;
 		this.telephone = telephone;
+		if (pets != null) {
+			this.pets = pets;
+		}
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
@@ -43,5 +45,32 @@ public class Owner extends Person {
 	
 	@Column(name = "telephone")
 	private String telephone;
+
+	public void addPet(Pet pet) {
+		if (pet.isNew()) {
+			this.getPets().add(pet);
+		}
+
+		pet.setOwner(this);
+	}
+
+	public Pet getPet(String name) {
+		return this.getPet(name, false);
+	}
+
+	public Pet getPet(String name, boolean ignoreNew) {
+		name = name.toLowerCase();
+		for (Pet pet : this.getPets()) {
+			if (!ignoreNew || !pet.isNew()) {
+				String compName = pet.getName();
+				compName.toLowerCase();
+				if (compName.equals(name)) {
+					return pet;
+				}
+			}
+		}
+
+		return null;
+	}
 	
 }
